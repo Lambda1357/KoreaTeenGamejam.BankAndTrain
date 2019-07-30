@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     public JoyStick joyStick, shotStick;
     public GameObject Bullet;
     private List<GameObject> bulletList = new List<GameObject>();
-    private float speed;
+    private float speed, hp, maxHp;
     private bool isMove;
     private Vector3 moveVec, shotVec, origin;
     private Animator animator;
@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         speed = 5;
+        maxHp = hp = 10;
         origin = transform.position;
         moveVec = Vector3.zero;
         shotVec = Vector3.zero;
@@ -34,6 +35,35 @@ public class Player : MonoBehaviour
         Move();
         Shot();
         AnimatonState();
+    }
+
+    private void MaxHpUp(int up)
+    {
+        maxHp += up;
+    }
+
+    private void HpUp(int upHp)
+    {
+        hp += upHp;
+        if(hp > maxHp)
+        {
+            hp = maxHp;
+        }
+    }
+
+    private void SpeedUp(int upSpeed)
+    {
+        speed += upSpeed;
+    }
+
+    public void LoseHp(int damage)
+    {
+        hp -= damage;
+        if(hp <= 0)
+        {
+            hp = 0;
+            Debug.Log("die");
+        }
     }
 
     void AnimatonState()
@@ -96,5 +126,25 @@ public class Player : MonoBehaviour
         if (pos.y < 0f) pos.y = 0f;
         if (pos.y > 1f) pos.y = 1f;
         transform.position = Camera.main.ViewportToWorldPoint(pos);
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if(other.gameObject.CompareTag("Object"))
+        {
+            ObjectState os = other.gameObject.GetComponent<ObjectState>();
+            switch (os.myType)
+            {
+            case ObjectState.TYPE.PANCAKE:
+                HpUp(1);
+                break;
+            case ObjectState.TYPE.SAMPAIN:
+                SpeedUp(2);
+                break;
+            case ObjectState.TYPE.BACON:
+                MaxHpUp(1);
+                break;
+            }
+        }
     }
 }
