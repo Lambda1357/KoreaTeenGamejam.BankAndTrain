@@ -9,6 +9,7 @@ public class JoyStick : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointer
     private Image button;
     private Image background;
     private Vector3 playerPos;
+    public bool isShot, shotStick;
 
     void Start()
     {
@@ -39,8 +40,21 @@ public class JoyStick : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointer
 
     public virtual void OnPointerUp(PointerEventData ped)
     {
-        playerPos = Vector3.zero;
-        button.rectTransform.anchoredPosition = Vector3.zero;
+        if(shotStick)
+        {
+            isShot = true;
+            button.rectTransform.anchoredPosition = Vector3.zero;
+        }
+        else
+        {    
+            playerPos = Vector3.zero;
+            button.rectTransform.anchoredPosition = Vector3.zero;
+        }
+    }
+
+    public Vector3 GetValue()
+    {
+        return playerPos;
     }
 
     public float GetXValue()
