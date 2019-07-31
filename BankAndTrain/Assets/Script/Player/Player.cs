@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public static Player instance = null; 
     public JoyStick joyStick, shotStick;
     public ObjectPool pool;
     public GameObject box;
@@ -20,7 +21,7 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
         speed = 5;
         Precision = 0;
-        maxHp = hp = 10;
+        maxHp = hp = 2;
         origin = transform.position;
         moveVec = Vector3.zero;
         shotVec = Vector3.zero;

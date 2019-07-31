@@ -47,6 +47,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78db3443873db7e4d9e45da1493366ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dataManager: {fileID: 0}
+  cameraManager: {fileID: 0}
+  itemManager: {fileID: 0}
+  sceneState: {fileID: 0}
+  questNum: 0
+  isKey: 0
+  money: 0
+  playerHp: 0
+  playerMaxHp: 0
+  playerSpeed: 0
 --- !u!114 &8619176292611818116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,13 +69,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d64eb182ccbc56b46a62179d5e48feb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moneyList: 88130000e803000070170000881300001027000070170000
+  endItem:
+  - {fileID: 21300000, guid: 0d3a9ac365b577647a205211a2d5c492, type: 3}
+  - {fileID: 21300000, guid: 297fd90dd62e1764b852dcc4038a5904, type: 3}
+  - {fileID: 21300000, guid: b0a938c6155ec4f46a034bbd044282e4, type: 3}
+  - {fileID: 21300000, guid: 0915d499942066b43a1a7782d2add19c, type: 3}
+  - {fileID: 21300000, guid: 9eb75d1ebe901bb489cbb52520f98b15, type: 3}
+  - {fileID: 21300000, guid: 28d8782ff4aa4824784b1d83f3529d4b, type: 3}
   items:
   - {fileID: 1503007565060573858, guid: aba921bf1e722fa48af0f4ac5689e7ad, type: 3}
   - {fileID: 9127389301100849396, guid: 130b6b7d47e1c4b46942976d5d8b3ddc, type: 3}
   - {fileID: 3204338457967212816, guid: 3c7446dadd24ab540be85c7ec47dd372, type: 3}
   - {fileID: 4081598766010939763, guid: baad928c12b9b7e45b544992a5991588, type: 3}
   - {fileID: 1820257469421330318, guid: 9bb496d8583403749b9b5dc667bff367, type: 3}
-  box: {fileID: 496407287577288704, guid: 841027fd2f38d8241a7b63c5b755a17f, type: 3}
+  itemList: []
 --- !u!114 &8619176292611818118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,6 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afbd64ca0a39cd548a1f72e8021ec60d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 1
 --- !u!114 &1843355835
 MonoBehaviour:
   m_ObjectHideFlags: 0

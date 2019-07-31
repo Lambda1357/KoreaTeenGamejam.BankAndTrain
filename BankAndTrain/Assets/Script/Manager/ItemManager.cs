@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ItemManager : MonoBehaviour
 {
+    public List<int> moneyList = new List<int>();
     public List<Sprite> endItem = new List<Sprite>();
     public List<GameObject> items = new List<GameObject>();
     public List<GameObject> itemList = new List<GameObject>();

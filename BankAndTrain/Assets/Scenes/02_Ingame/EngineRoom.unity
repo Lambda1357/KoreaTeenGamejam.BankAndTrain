@@ -277,7 +277,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 1a4222c052d3d5246947bcbfe10a37cb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e752f9d737be8cf46a73ac7e3c325c35, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -418,7 +418,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 71bfa9fad8190974eacb1702295f2f38, type: 3}
     m_FontSize: 225
     m_FontStyle: 0
     m_BestFit: 0
@@ -872,7 +872,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 585165263
-  m_SortingLayer: 4
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9814e4e838a74a64fb9eba931836d887, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -915,6 +915,7 @@ MonoBehaviour:
   popUp: {fileID: 1283431376}
   box: {fileID: 1200830921}
   questItem: {fileID: 668998151}
+  text: {fileID: 347926321}
   image: {fileID: 21300000, guid: 4b26537d18ed4a0408a55046a708aa61, type: 3}
   item: {fileID: 3204338457967212816, guid: 3c7446dadd24ab540be85c7ec47dd372, type: 3}
   isOpen: 0

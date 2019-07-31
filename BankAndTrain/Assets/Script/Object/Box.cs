@@ -8,6 +8,7 @@ public class Box : MonoBehaviour
     public FadeUI fade;
     public GameObject popUp, box;
     public Image questItem;
+    public Text text;
     public Sprite image;
     public GameObject item;
     private SpriteRenderer sprite;
@@ -31,6 +32,9 @@ public class Box : MonoBehaviour
         fade.Alpha(1.0f);
         popUp.SetActive(true);
         questItem.sprite = GameManager.instance.itemManager.endItem[GameManager.instance.questNum];
+        text.text = "" + GameManager.instance.itemManager.moneyList[GameManager.instance.questNum];
+        GameManager.instance.money += GameManager.instance.itemManager.moneyList[GameManager.instance.questNum];
+        PlayerPrefs.SetInt("Money", GameManager.instance.money);
         GameManager.instance.itemManager.Set();
         box.SetActive(false);
     }

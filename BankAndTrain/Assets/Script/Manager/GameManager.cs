@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public SceneStateManager sceneState;
     public int questNum;
     public bool isKey = false;
+    public int money, playerHp, playerMaxHp, playerSpeed;
 
     void Awake()
     {
@@ -27,6 +28,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        money = PlayerPrefs.GetInt("Money");
         dataManager = GetComponent<DataManager>();
         cameraManager = GetComponent<CameraManager>();
         itemManager = GetComponent<ItemManager>();
