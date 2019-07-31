@@ -51,7 +51,7 @@ public class Box : MonoBehaviour
         StartCoroutine(EndGame());
     }
 
-    void OnCollisionEnter(Collision other)
+    void OnCollisionEnter2D(Collision2D other)
     {
         if(other.gameObject.CompareTag("Player") && !isOpen)
         {
