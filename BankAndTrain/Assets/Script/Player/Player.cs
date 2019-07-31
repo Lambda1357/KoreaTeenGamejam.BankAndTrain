@@ -133,7 +133,7 @@ public class Player : MonoBehaviour
         transform.position = Camera.main.ViewportToWorldPoint(pos);
     }
 
-    void OnCollisionEnter2D(Collision2D other)
+    void OnCollisionEnter(Collision other)
     {
         if(other.gameObject.CompareTag("Item"))
         {

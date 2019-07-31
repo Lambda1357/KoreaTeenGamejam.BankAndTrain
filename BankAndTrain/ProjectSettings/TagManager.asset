@@ -7,6 +7,8 @@ TagManager:
   - Object
   - PlayerBullet
   - Item
+  - Food
+  - CoverPoint
   layers:
   - Default
   - TransparentFX
@@ -16,7 +18,7 @@ TagManager:
   - UI
   - 
   - 
-  - Object
+  - 
   - 
   - 
   - 
@@ -43,16 +45,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Background
-    uniqueID: 1100823265
-    locked: 0
-  - name: Bullet
-    uniqueID: 348181337
-    locked: 0
-  - name: Character
-    uniqueID: 2503349637
-    locked: 0
-  - name: Object
-    uniqueID: 585165263
     locked: 0
