@@ -120,6 +120,7 @@ public class Player : MonoBehaviour
         float x = joyStick.GetXValue();
         float y = joyStick.GetYValue();
         moveVec = new Vector3(x,y,0).normalized;
+        Debug.Log(moveVec);
         return moveVec;
     } 
 
