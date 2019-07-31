@@ -22,13 +22,13 @@ public class ShowQuest : MonoBehaviour
         {
             if(GameManager.instance.dataManager.dataList[i].clear)
             {
-                Debug.Log(random[i]);
-                random.RemoveAt(i);
+                random.RemoveAt(GameManager.instance.dataManager.dataList[i].num);
             }
         }
 
         if(random.Count == 0)
         {
+            Debug.Log("check boss");
             sprite.sprite = images[6];
             GameManager.instance.sceneState.index = 5;
             return;
