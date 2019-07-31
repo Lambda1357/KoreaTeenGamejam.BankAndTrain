@@ -178,7 +178,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxDistenceForCover: 10
-  fireDelay: 0.3
-  distanceFromCoverPoint: 0.5
-  minGunFireCount: 3
+  fireDelay: 1.5
+  distanceFromCoverPoint: 0.3
+  minGunFireCount: 1
   gunFireAimDistence: 0.5
+  coverZDistence: 0.5

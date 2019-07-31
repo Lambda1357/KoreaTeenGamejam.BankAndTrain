@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CoverPoint : MonoBehaviour
 {
-    public Vector2 position;
+    public Vector3 position;
     public bool isUsing;
 
     private void Start()
@@ -13,7 +13,7 @@ public class CoverPoint : MonoBehaviour
         isUsing = false;
     }
 
-    public float GetMagnitudeWith(Vector2 target)
+    public float GetMagnitudeWith(Vector3 target)
     {
         return (target - position).magnitude;
     }

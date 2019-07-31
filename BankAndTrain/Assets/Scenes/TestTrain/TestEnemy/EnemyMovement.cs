@@ -16,6 +16,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] float distanceFromCoverPoint;
     [SerializeField] int minGunFireCount;
     [SerializeField] float gunFireAimDistence;
+    [SerializeField] float coverZDistence;
 
     float curFireDelay;
     int curGunfireCount;
@@ -52,9 +53,6 @@ public class EnemyMovement : MonoBehaviour
         bool isInCoverDistence;
         isInCoverDistence = maxDistenceForCover >= ((agentObject.transform.position - player.transform.position)).magnitude;
 
-        Debug.Log(isInCoverDistence);
-        Debug.Log(((Vector2)(agentObject.transform.position - player.transform.position)).magnitude);
-
         switch (status)
         {
             case Status.Find:
@@ -72,7 +70,14 @@ public class EnemyMovement : MonoBehaviour
                         closestPoint.GetMagnitudeWith(player.transform.position) && !point.isUsing) 
                         closestPoint = point;
                 }
-                agent.destination = closestPoint.position;
+
+                Vector3 coverPosit = closestPoint.position;
+                if (closestPoint.position.z > player.transform.position.z)
+                    coverPosit.z += coverZDistence;
+                else
+                    coverPosit.z -= coverZDistence;
+
+                agent.destination = coverPosit;
 
                 if (agent.remainingDistance <= distanceFromCoverPoint)
                 {
@@ -106,9 +111,9 @@ public class EnemyMovement : MonoBehaviour
 
     void MoveToGunFirePosition()
     {
-        Vector2 gunFirePosit;
+        Vector3 gunFirePosit;
         gunFirePosit = curCoverPoint.position;
-        gunFirePosit.Set(gunFirePosit.x > 0 ? gunFirePosit.x - gunFireAimDistence : gunFirePosit.x + gunFireAimDistence, gunFirePosit.y);
+        gunFirePosit.Set(gunFirePosit.x > 0 ? gunFirePosit.x - gunFireAimDistence : gunFirePosit.x + gunFireAimDistence, gunFirePosit.y,gunFirePosit.z);
         agent.destination = gunFirePosit;
         if (agent.remainingDistance <= 0.1)
             FireBullet();

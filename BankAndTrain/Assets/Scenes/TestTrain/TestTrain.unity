@@ -667,18 +667,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3443530720076252704, guid: 7c39aae5e5ebcec4287001f0660872b9,
         type: 3}
-      propertyPath: distanceFromCoverPoint
-      value: 0.3
+      propertyPath: coverYDistence
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 3443530720076252704, guid: 7c39aae5e5ebcec4287001f0660872b9,
         type: 3}
-      propertyPath: minGunFireCount
-      value: 1
+      propertyPath: maxDistenceForCover
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3443530720076252704, guid: 7c39aae5e5ebcec4287001f0660872b9,
         type: 3}
       propertyPath: fireDelay
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c39aae5e5ebcec4287001f0660872b9, type: 3}
