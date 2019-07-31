@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 496407287577288710}
   - component: {fileID: 496407287577288705}
-  - component: {fileID: 496407287577288708}
   - component: {fileID: 496407287577288711}
+  - component: {fileID: 6682352457921430871}
   m_Layer: 0
   m_Name: Box
   m_TagString: Object
@@ -26,13 +26,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 496407287577288704}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 1.61, y: 2.06, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!212 &496407287577288705
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -68,7 +68,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 141564905
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 0a57e2542479213449b4ddaa074a74c3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -81,32 +81,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &496407287577288708
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 496407287577288704}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.54, y: 2.43}
-    newSize: {x: 2.54, y: 2.43}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.54, y: 2.43}
-  m_EdgeRadius: 0
 --- !u!114 &496407287577288711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,7 +97,21 @@ MonoBehaviour:
   popUp: {fileID: 0}
   box: {fileID: 0}
   questItem: {fileID: 0}
+  text: {fileID: 0}
   image: {fileID: 21300000, guid: c7e1a887293e8b84ea4287bab5185e88, type: 3}
   item: {fileID: 0}
   isOpen: 0
   isEnd: 0
+--- !u!65 &6682352457921430871
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 496407287577288704}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.54, y: 2.43, z: 2.4}
+  m_Center: {x: 0, y: 0, z: 0}
