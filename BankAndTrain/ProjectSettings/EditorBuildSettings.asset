@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/02_Ingame/GuestRoom.unity
     guid: c9866670c4b3e854792c7a96d54c17fc
   - enabled: 1
-    path: Assets/Scenes/02_Ingame/kitchen.unity
+    path: Assets/Scenes/02_Ingame/Kitchen.unity
     guid: 62b8ed97a1687eb4a8244d3ab21da7db
   - enabled: 1
     path: Assets/Scenes/02_Ingame/CargoBay.unity

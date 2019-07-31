@@ -7,7 +7,8 @@ public class Player : MonoBehaviour
     public JoyStick joyStick, shotStick;
     public GameObject Bullet;
     private List<GameObject> bulletList = new List<GameObject>();
-    private float speed, hp, maxHp;
+    private GameObject box;
+    private float speed, hp, maxHp, Precision;
     private bool isMove;
     private Vector3 moveVec, shotVec, origin;
     private Animator animator;
@@ -16,15 +17,17 @@ public class Player : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         speed = 5;
+        Precision = 0;
         maxHp = hp = 10;
         origin = transform.position;
         moveVec = Vector3.zero;
         shotVec = Vector3.zero;
-        GameObject box = new GameObject("BulletBox");
+        box = new GameObject("BulletBox");
         for(int i = 0; i<10; i++)
         {
             GameObject temp = Instantiate(Bullet, Vector3.zero, Quaternion.identity);
             temp.SetActive(false);
+            temp.transform.SetParent(box.transform);
             bulletList.Add(temp);
         }
     }
@@ -82,11 +85,26 @@ public class Player : MonoBehaviour
         origin = transform.position;
     }
 
+    Vector3 PrecisionVec()
+    {
+        Vector3 pos = Vector3.zero;
+        for(int i = 0; i<box.transform.childCount; i++)
+        {
+            if(box.transform.GetChild(i).gameObject.activeSelf)
+            {
+                Precision += 0.25f;
+            }
+        }
+        pos = new Vector3(Random.Range(-Precision, Precision), 0, 0);
+        return pos;
+    }
+
     void Shot()
     {
         if(shotStick.isShot)
         {
-            shotVec = shotStick.GetValue();
+            shotVec = shotStick.GetValue() + PrecisionVec();
+            Precision = 0;
             for(int i = 0; i<bulletList.Count; i++)
             {
                 if(!bulletList[i].gameObject.activeSelf)
@@ -130,7 +148,7 @@ public class Player : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.gameObject.CompareTag("Object"))
+        if(other.gameObject.CompareTag("Food"))
         {
             ObjectState os = other.gameObject.GetComponent<ObjectState>();
             switch (os.myType)
@@ -145,6 +163,7 @@ public class Player : MonoBehaviour
                 MaxHpUp(1);
                 break;
             }
+            Destroy(other.gameObject);
         }
     }
 }
