@@ -21,7 +21,7 @@ public class Bullet : MonoBehaviour
         moveVec = pos;
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Object"))
         {
