@@ -4,18 +4,41 @@ using UnityEngine;
 
 public class EndLine : MonoBehaviour
 {
+    public bool isLast;
     public SceneStateManager stateManager;
+    private RoomState roomState;
 
     void Start()
     {
-        stateManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<SceneStateManager>();
+        stateManager = GameManager.instance.GetComponent<SceneStateManager>();
+        roomState = GameObject.Find("Boxes").GetComponent<RoomState>();
     }
 
     void OnCollisionEnter2D(Collision2D other)
     {   
         if(other.gameObject.CompareTag("Player"))
         {
-            stateManager.LoadNextLevel();
+            if(isLast)
+            {
+                if(GameManager.instance.isKey)
+                {
+                    stateManager.LoadNextLevel();
+                }
+            }
+            else
+            {
+                if(GameManager.instance.isKey)
+                {
+                    stateManager.LoadNextLevel();
+                }
+                else
+                {
+                    if(roomState.Reserch())
+                    {
+                        stateManager.LoadNextLevel();
+                    }
+                }   
+            }
         }
     }
 }

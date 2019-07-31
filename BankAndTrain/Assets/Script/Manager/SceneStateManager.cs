@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class SceneStateManager : MonoBehaviour
 {
 
+    public int index = 1;// 요걸 조정해서 이동
+
     public void LoadMain()
     {
         SceneManager.LoadScene("Main");
@@ -16,27 +18,21 @@ public class SceneStateManager : MonoBehaviour
         Scene scene = SceneManager.GetActiveScene();
         int index = scene.buildIndex;
         SceneManager.LoadScene(index+1);
+        
+        if(index == 1)
+        {
+            RoomState.boxCnt = Random.Range(4, GameManager.instance.itemManager.itemList.Count/2);
+        }   
+        else
+        {
+            RoomState.boxCnt = GameManager.instance.itemManager.itemList.Count;
+        }  
     }
 
-    public void LoadGuestScene()
+    public void LoadSceneByIndex()
     {
-        SceneManager.LoadScene("GuestRoom");
+        SceneManager.LoadScene(index);
+        RoomState.boxCnt = Random.Range(2,4);
     }
-
-    public void LoadKitchenScene()
-    {
-        SceneManager.LoadScene("Kitchen");
-    }
-
-    public void LoadCarbaygoScene()
-    {
-        SceneManager.LoadScene("Carbaygo");
-    }
-
-    public void LoadEngineScene()
-    {
-        SceneManager.LoadScene("EngineRoom");
-    }
-
 
 }

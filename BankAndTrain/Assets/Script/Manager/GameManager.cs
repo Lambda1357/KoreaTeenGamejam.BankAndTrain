@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     public CameraManager cameraManager;
     public ItemManager itemManager;
     public SceneStateManager sceneState;
+    public int questNum;
+    public bool isKey = false;
 
     void Awake()
     {

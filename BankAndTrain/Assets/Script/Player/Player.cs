@@ -135,7 +135,7 @@ public class Player : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.gameObject.CompareTag("Food"))
+        if(other.gameObject.CompareTag("Item"))
         {
             ObjectState os = other.gameObject.GetComponent<ObjectState>();
             switch (os.myType)
@@ -148,6 +148,9 @@ public class Player : MonoBehaviour
                 break;
             case ObjectState.TYPE.BACON:
                 MaxHpUp(1);
+                break;
+            case ObjectState.TYPE.KEY:
+                GameManager.instance.isKey = true;
                 break;
             }
             Destroy(other.gameObject);

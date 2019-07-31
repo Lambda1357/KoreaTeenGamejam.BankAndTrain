@@ -29,7 +29,6 @@ public class DoorUI : MonoBehaviour
             yield return new WaitForSeconds(animationSpeed);
         }
         fade.Alpha(1);
-        CameraManager cam = Camera.main.GetComponent<CameraManager>();
-        cam.ZoomIn(quest);
+        quest.SetActive(true);
     }
 }

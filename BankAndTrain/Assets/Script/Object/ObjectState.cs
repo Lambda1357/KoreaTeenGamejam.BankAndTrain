@@ -8,7 +8,8 @@ public class ObjectState : MonoBehaviour
     {
         SAMPAIN,
         PANCAKE,
-        BACON
+        BACON,
+        KEY
     }
     public TYPE myType;
 }
