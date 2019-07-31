@@ -9,11 +9,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8619176292611818119}
+  - component: {fileID: 5955375306239372660}
   - component: {fileID: 8619176292611818116}
   - component: {fileID: 8619176292611818118}
+  - component: {fileID: 1843355835}
+  - component: {fileID: 1843355836}
   m_Layer: 0
   m_Name: Manager
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32,6 +35,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5955375306239372660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8619176292611818117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78db3443873db7e4d9e45da1493366ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8619176292611818116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,3 +78,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afbd64ca0a39cd548a1f72e8021ec60d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1843355835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8619176292611818117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e67e2e069a5e76e49b35b91ce2053402, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1843355836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8619176292611818117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d88b010bd722b744b681bbaba16fce8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletList: []
+  Bullet: {fileID: 2379244083048490121, guid: 35e7ac0c6a7b3cb44b28386af1e33754, type: 3}

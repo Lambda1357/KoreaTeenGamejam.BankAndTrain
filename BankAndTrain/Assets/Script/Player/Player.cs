@@ -5,16 +5,18 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public JoyStick joyStick, shotStick;
-    public GameObject Bullet;
-    private List<GameObject> bulletList = new List<GameObject>();
-    private GameObject box;
+    public ObjectPool pool;
+    public GameObject box;
     private float speed, hp, maxHp, Precision;
     private bool isMove;
     private Vector3 moveVec, shotVec, origin;
     private Animator animator;
+    private int activeNum;
 
     void Start()
     {
+        pool = GameManager.instance.GetComponent<ObjectPool>();
+        box = GameObject.Find("BulletBox");
         animator = GetComponent<Animator>();
         speed = 5;
         Precision = 0;
@@ -22,14 +24,6 @@ public class Player : MonoBehaviour
         origin = transform.position;
         moveVec = Vector3.zero;
         shotVec = Vector3.zero;
-        box = new GameObject("BulletBox");
-        for(int i = 0; i<10; i++)
-        {
-            GameObject temp = Instantiate(Bullet, Vector3.zero, Quaternion.identity);
-            temp.SetActive(false);
-            temp.transform.SetParent(box.transform);
-            bulletList.Add(temp);
-        }
     }
 
     void Update()
@@ -88,11 +82,15 @@ public class Player : MonoBehaviour
     Vector3 PrecisionVec()
     {
         Vector3 pos = Vector3.zero;
-        for(int i = 0; i<box.transform.childCount; i++)
+        for(int i = 0; i< box.transform.childCount; i++)
         {
             if(box.transform.GetChild(i).gameObject.activeSelf)
             {
-                Precision += 0.25f;
+                activeNum++;
+                if(box.transform.GetChild(i).gameObject.CompareTag("PlayerBullet"))
+                {
+                    Precision += 0.15f;
+                }
             }
         }
         pos = new Vector3(Random.Range(-Precision, Precision), 0, 0);
@@ -104,21 +102,10 @@ public class Player : MonoBehaviour
         if(shotStick.isShot)
         {
             shotVec = shotStick.GetValue() + PrecisionVec();
+            pool.CreateBullet(activeNum, transform.position ,shotVec, "PlayerBullet");
             Precision = 0;
-            for(int i = 0; i<bulletList.Count; i++)
-            {
-                if(!bulletList[i].gameObject.activeSelf)
-                {
-                    Bullet bull = bulletList[i].GetComponent<Bullet>();
-                    bull.SetVec(shotVec);
-                    float angle = (float)Mathf.Atan2(shotVec.y, shotVec.x) * Mathf.Rad2Deg + 90;
-                    bulletList[i].transform.position = transform.position;
-                    bulletList[i].transform.rotation = Quaternion.Euler(0,0,angle);
-                    bulletList[i].SetActive(true);
-                    shotStick.isShot = false;
-                    return;
-                }
-            }
+            activeNum = 0;
+            shotStick.isShot = false;
         }
     }
 

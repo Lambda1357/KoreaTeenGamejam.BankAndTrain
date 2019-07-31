@@ -4,26 +4,12 @@ using UnityEngine;
 
 public class ItemManager : MonoBehaviour
 {
-    public static ItemManager instance = null;
     public List<GameObject> items = new List<GameObject>();
-    public static List<GameObject> itemList = new List<GameObject>();
+    public List<GameObject> itemList = new List<GameObject>();
     public GameObject box;
     private int boxCnt;
     private Vector3 boxPos;
     private int allBoxCount;
-
-    void Awake()
-    {
-        if(instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-        DontDestroyOnLoad(gameObject);
-    }
 
     void Start()
     {
@@ -34,8 +20,4 @@ public class ItemManager : MonoBehaviour
         }
         itemList.Add(items[items.Count-1]);
     }
-
-    
-
-
 }

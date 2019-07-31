@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/02_Ingame/CargoBay.unity
     guid: 6aa3be946ea1db24b8e76cccc559a110
+  - enabled: 1
+    path: Assets/Scenes/02_Ingame/EngineRoom.unity
+    guid: c669132bb785c754991a3873b1728d64
   m_configObjects: {}
