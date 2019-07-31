@@ -14,7 +14,7 @@ public class EndLine : MonoBehaviour
         roomState = GameObject.Find("Boxes").GetComponent<RoomState>();
     }
 
-    void OnCollisionEnter2D(Collision2D other)
+    void OnCollisionEnter(Collision other)
     {   
         if(other.gameObject.CompareTag("Player"))
         {
