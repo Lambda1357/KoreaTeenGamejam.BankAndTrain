@@ -14,8 +14,10 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] float maxDistenceForCover;
     [SerializeField] float fireDelay;
     [SerializeField] float distanceFromCoverPoint;
+    [SerializeField] int minGunFireCount;
 
     float curFireDelay;
+    int curGunfireCount;
 
     enum Status
     {
@@ -38,17 +40,17 @@ public class EnemyMovement : MonoBehaviour
 
     void LoadCoverPoints()
     {
-        GameObject perent = GameObject.Find("CoverPoints");
-        coverPoints = perent.GetComponentsInChildren<CoverPoint>();
+        coverPoints = FindObjectsOfType<CoverPoint>();
     }
 
     // Update is called once per frame
     void Update()
     {
         bool isInCoverDistence;
-        isInCoverDistence = maxDistenceForCover >= ((Vector2)(agentObject.transform.position - player.transform.position)).magnitude;
+        isInCoverDistence = maxDistenceForCover >= ((agentObject.transform.position - player.transform.position)).magnitude;
 
         Debug.Log(isInCoverDistence);
+        Debug.Log(((Vector2)(agentObject.transform.position - player.transform.position)).magnitude);
 
         switch (status)
         {
@@ -70,7 +72,11 @@ public class EnemyMovement : MonoBehaviour
                 agent.destination = closestPoint.position;
 
                 if (agent.remainingDistance <= distanceFromCoverPoint)
+                {
+                    curGunfireCount = minGunFireCount;
                     status = Status.Shoot;
+                }
+                
                 break;
 
             case Status.Shoot:
@@ -79,9 +85,10 @@ public class EnemyMovement : MonoBehaviour
                 {
                     FireBullet();
                     curFireDelay = fireDelay;
+                    curGunfireCount--;
                 }
 
-                if (!isInCoverDistence)
+                if (!isInCoverDistence && curGunfireCount <= 0) 
                     status = Status.Find;
                 break;
         }
