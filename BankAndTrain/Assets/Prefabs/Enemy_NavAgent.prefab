@@ -177,8 +177,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be1c329e65ff3ba43a7d072b7875021f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDistenceForCover: 10
-  fireDelay: 1.5
+  takeCloseCoverRate: 1
+  directAttackRate: 0
+  fireDelay: 0.8
   distanceFromCoverPoint: 0.3
   minGunFireCount: 1
   gunFireAimDistence: 0.5
