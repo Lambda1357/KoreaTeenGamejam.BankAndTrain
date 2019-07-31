@@ -10,7 +10,7 @@ public class EnemyMovement : MonoBehaviour
     Transform sprite;
     CoverPoint[] coverPoints;
     GameObject player;
-
+    ObjectPool objPool;
     
     [Range(0.0f, 1.0f), SerializeField]
     float takeCloseCoverRate;
@@ -41,6 +41,7 @@ public class EnemyMovement : MonoBehaviour
         agent = agentObject.GetComponent<NavMeshAgent>();
         sprite = transform.Find("sprite");
         player = GameObject.FindWithTag("Player");
+        objPool = FindObjectOfType<ObjectPool>();
 
         LoadCoverPoints();
         status = Status.Find;
@@ -93,7 +94,7 @@ public class EnemyMovement : MonoBehaviour
                 agent.destination = player.transform.position;
                 if(curFireDelay >= fireDelay)
                 {
-                    //TODO: fire
+                    objPool.CreateBullet(1, agent.transform.position, (player.transform.position - agent.transform.position).normalized, "EnemyBullet");
                     Debug.Log("Fire!!");
                     curGunfireCount--;
                     curFireDelay = 0;
