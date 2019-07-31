@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class EnemyAnimate : MonoBehaviour
 {
-    Animator animator;
+    protected Animator animator;
     GameObject movement;
 
     Vector3 prvPosition;
     Vector3 curPosition;
 
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
         animator = GetComponent<Animator>();
         prvPosition = curPosition = Vector3.zero;
@@ -19,7 +19,7 @@ public class EnemyAnimate : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected void Update()
     {
         curPosition = movement.transform.position;
         var diraction = curPosition - prvPosition;
