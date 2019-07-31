@@ -22,7 +22,7 @@ public class ShowQuest : MonoBehaviour
         {
             if(GameManager.instance.dataManager.dataList[i].clear)
             {
-                random.Remove(i);
+                random.RemoveAt(GameManager.instance.dataManager.dataList[i].num);
             }
         }
 

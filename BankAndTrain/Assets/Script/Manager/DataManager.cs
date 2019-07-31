@@ -7,9 +7,11 @@ using LitJson;
 [SerializeField]
 public class GameData
 {
+	public int num;
 	public bool clear;
-    public GameData(bool c)
+    public GameData(int n,bool c)
     {
+		num = n;
         clear = c;
     }
 }
@@ -31,7 +33,7 @@ public class DataManager : MonoBehaviour
 		{
 			for(int i = 0; i  < 6; i++)
 			{
-				datas.Add(new GameData(false));
+				datas.Add(new GameData(i, false));
 			}
 			SaveData(datas);
 		}
@@ -64,7 +66,7 @@ public class DataManager : MonoBehaviour
         // load to array
 		for(int i = 0; i <data.Count; i++)
 		{
-            dataList.Add( new GameData(bool.Parse(data[i]["clear"].ToString()) ));
+            dataList.Add( new GameData(int.Parse(data[i]["num"].ToString()),bool.Parse(data[i]["clear"].ToString()) ));
 		}    	
     }
 
