@@ -665,6 +665,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3443530720076252704, guid: 7c39aae5e5ebcec4287001f0660872b9,
+        type: 3}
+      propertyPath: distanceFromCoverPoint
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3443530720076252704, guid: 7c39aae5e5ebcec4287001f0660872b9,
+        type: 3}
+      propertyPath: minGunFireCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3443530720076252704, guid: 7c39aae5e5ebcec4287001f0660872b9,
+        type: 3}
+      propertyPath: fireDelay
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c39aae5e5ebcec4287001f0660872b9, type: 3}
 --- !u!1001 &3914548950540908354

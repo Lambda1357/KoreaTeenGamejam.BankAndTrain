@@ -15,9 +15,12 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] float fireDelay;
     [SerializeField] float distanceFromCoverPoint;
     [SerializeField] int minGunFireCount;
+    [SerializeField] float gunFireAimDistence;
 
     float curFireDelay;
     int curGunfireCount;
+    float curGunFireDistence;
+    CoverPoint curCoverPoint;
 
     enum Status
     {
@@ -66,7 +69,7 @@ public class EnemyMovement : MonoBehaviour
                 foreach(var point in coverPoints)
                 {
                     if (point.GetMagnitudeWith(player.transform.position) <
-                        closestPoint.GetMagnitudeWith(player.transform.position))
+                        closestPoint.GetMagnitudeWith(player.transform.position) && !point.isUsing) 
                         closestPoint = point;
                 }
                 agent.destination = closestPoint.position;
@@ -75,6 +78,7 @@ public class EnemyMovement : MonoBehaviour
                 {
                     curGunfireCount = minGunFireCount;
                     status = Status.Shoot;
+                    curCoverPoint = closestPoint;
                 }
                 
                 break;
@@ -83,9 +87,8 @@ public class EnemyMovement : MonoBehaviour
                 curFireDelay -= Time.deltaTime;
                 if (curFireDelay <= 0)
                 {
-                    FireBullet();
+                    MoveToGunFirePosition();
                     curFireDelay = fireDelay;
-                    curGunfireCount--;
                 }
 
                 if (!isInCoverDistence && curGunfireCount <= 0) 
@@ -101,14 +104,28 @@ public class EnemyMovement : MonoBehaviour
         sprite.transform.position = agentObject.transform.position;
     }
 
+    void MoveToGunFirePosition()
+    {
+        Vector2 gunFirePosit;
+        gunFirePosit = curCoverPoint.position;
+        gunFirePosit.Set(gunFirePosit.x > 0 ? gunFirePosit.x - gunFireAimDistence : gunFirePosit.x + gunFireAimDistence, gunFirePosit.y);
+        agent.destination = gunFirePosit;
+        if (agent.remainingDistance <= 0.1)
+            FireBullet();
+    }
+
     void FireBullet()
     {
         //TODO : Get Bullet from other branch and Add it
+        curFireDelay = fireDelay;
+        curGunfireCount--;
         Debug.Log(gameObject.name + " : bullet Fired");
+        ReleaseToCoverPosition();
     }
 
-    void ProcessStateMachine()
+    void ReleaseToCoverPosition()
     {
-        
+        status = Status.Hide;
     }
+
 }
