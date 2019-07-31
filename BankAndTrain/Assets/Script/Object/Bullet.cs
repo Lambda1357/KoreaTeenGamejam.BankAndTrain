@@ -15,8 +15,9 @@ public class Bullet : MonoBehaviour
         speed = 15f;
     }
 
-    public void SetVec(Vector3 pos)
+    public void SetVec(Vector3 start, Vector3 pos)
     {
+        transform.position = start;
         moveVec = pos;
     }
 

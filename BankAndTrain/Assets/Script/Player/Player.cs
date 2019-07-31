@@ -5,28 +5,25 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public JoyStick joyStick, shotStick;
-    public GameObject Bullet;
-    private List<GameObject> bulletList = new List<GameObject>();
-    private float speed, hp, maxHp;
+    public ObjectPool pool;
+    public GameObject box;
+    private float speed, hp, maxHp, Precision;
     private bool isMove;
     private Vector3 moveVec, shotVec, origin;
     private Animator animator;
+    private int activeNum;
 
     void Start()
     {
+        pool = GameManager.instance.GetComponent<ObjectPool>();
+        box = GameObject.Find("BulletBox");
         animator = GetComponent<Animator>();
         speed = 5;
+        Precision = 0;
         maxHp = hp = 10;
         origin = transform.position;
         moveVec = Vector3.zero;
         shotVec = Vector3.zero;
-        GameObject box = new GameObject("BulletBox");
-        for(int i = 0; i<10; i++)
-        {
-            GameObject temp = Instantiate(Bullet, Vector3.zero, Quaternion.identity);
-            temp.SetActive(false);
-            bulletList.Add(temp);
-        }
     }
 
     void Update()
@@ -82,25 +79,33 @@ public class Player : MonoBehaviour
         origin = transform.position;
     }
 
+    Vector3 PrecisionVec()
+    {
+        Vector3 pos = Vector3.zero;
+        for(int i = 0; i< box.transform.childCount; i++)
+        {
+            if(box.transform.GetChild(i).gameObject.activeSelf)
+            {
+                activeNum++;
+                if(box.transform.GetChild(i).gameObject.CompareTag("PlayerBullet"))
+                {
+                    Precision += 0.15f;
+                }
+            }
+        }
+        pos = new Vector3(Random.Range(-Precision, Precision), 0, 0);
+        return pos;
+    }
+
     void Shot()
     {
         if(shotStick.isShot)
         {
-            shotVec = shotStick.GetValue();
-            for(int i = 0; i<bulletList.Count; i++)
-            {
-                if(!bulletList[i].gameObject.activeSelf)
-                {
-                    Bullet bull = bulletList[i].GetComponent<Bullet>();
-                    bull.SetVec(shotVec);
-                    float angle = (float)Mathf.Atan2(shotVec.y, shotVec.x) * Mathf.Rad2Deg + 90;
-                    bulletList[i].transform.position = transform.position;
-                    bulletList[i].transform.rotation = Quaternion.Euler(0,0,angle);
-                    bulletList[i].SetActive(true);
-                    shotStick.isShot = false;
-                    return;
-                }
-            }
+            shotVec = shotStick.GetValue() + PrecisionVec();
+            pool.CreateBullet(activeNum, transform.position ,shotVec, "PlayerBullet");
+            Precision = 0;
+            activeNum = 0;
+            shotStick.isShot = false;
         }
     }
 
@@ -130,7 +135,7 @@ public class Player : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.gameObject.CompareTag("Object"))
+        if(other.gameObject.CompareTag("Food"))
         {
             ObjectState os = other.gameObject.GetComponent<ObjectState>();
             switch (os.myType)
@@ -145,6 +150,7 @@ public class Player : MonoBehaviour
                 MaxHpUp(1);
                 break;
             }
+            Destroy(other.gameObject);
         }
     }
 }
