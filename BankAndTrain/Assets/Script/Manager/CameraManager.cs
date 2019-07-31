@@ -6,14 +6,6 @@ public class CameraManager : MonoBehaviour
 {
     public GameObject player;
 
-    public void ZoomIn(GameObject zoomObj)
-    {
-        Vector3 pos = zoomObj.transform.position;
-        pos.z = -10;
-        transform.position = pos;
-        Camera.main.orthographicSize = 1.5f;
-    }
-
 
     void Update()
     {
@@ -21,7 +13,7 @@ public class CameraManager : MonoBehaviour
         {
             Vector3 pos = player.transform.position;
             pos.x = 0;
-            pos.z = -10;
+            pos.y = 1;
             transform.position = pos;
         }
     }
