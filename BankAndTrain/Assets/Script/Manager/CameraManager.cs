@@ -13,7 +13,7 @@ public class CameraManager : MonoBehaviour
         {
             Vector3 pos = player.transform.position;
             pos.x = 0;
-            pos.y = 1;
+            pos.z = -10;
             transform.position = pos;
         }
     }
