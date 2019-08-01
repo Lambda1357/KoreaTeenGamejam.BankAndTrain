@@ -9,6 +9,7 @@ TagManager:
   - Item
   - Food
   - CoverPoint
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX

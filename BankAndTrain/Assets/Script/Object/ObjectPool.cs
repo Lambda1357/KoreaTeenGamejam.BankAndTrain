@@ -29,8 +29,8 @@ public class ObjectPool : MonoBehaviour
         bull.SetVec(startPos, shotVec);
         
         //회전
-        float angle = (float)Mathf.Atan2(shotVec.z, shotVec.x) * Mathf.Rad2Deg + 90;
-        bulletList[number].transform.rotation = Quaternion.Euler(90,0,angle);
+        float angle = (float)Mathf.Atan2(shotVec.y, shotVec.x) * Mathf.Rad2Deg + 90;
+        bulletList[number].transform.rotation = Quaternion.Euler(0,0,angle);
 
         //태그달고 발사
         bulletList[number].gameObject.tag = tag;
