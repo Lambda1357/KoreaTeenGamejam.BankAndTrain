@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public CameraManager cameraManager;
     public ItemManager itemManager;
     public SceneStateManager sceneState;
+    public SoundManager soundManager;
     public int questNum;
     public bool isKey = false;
     public int money, playerHp, playerMaxHp, playerSpeed;
@@ -33,6 +34,7 @@ public class GameManager : MonoBehaviour
         cameraManager = GetComponent<CameraManager>();
         itemManager = GetComponent<ItemManager>();
         sceneState = GetComponent<SceneStateManager>();
+        soundManager = GetComponent<SoundManager>();
     }
 
 }

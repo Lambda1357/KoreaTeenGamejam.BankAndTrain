@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 8619176292611818118}
   - component: {fileID: 1843355835}
   - component: {fileID: 1843355836}
+  - component: {fileID: 3027192584583341452}
+  - component: {fileID: 8389203713944684318}
   m_Layer: 0
   m_Name: Manager
   m_TagString: GameController
@@ -51,6 +53,7 @@ MonoBehaviour:
   cameraManager: {fileID: 0}
   itemManager: {fileID: 0}
   sceneState: {fileID: 0}
+  soundManager: {fileID: 0}
   questNum: 0
   isKey: 0
   money: 0
@@ -123,3 +126,124 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletList: []
   Bullet: {fileID: 2379244083048490121, guid: 35e7ac0c6a7b3cb44b28386af1e33754, type: 3}
+--- !u!114 &3027192584583341452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8619176292611818117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc213f5b386a3754ab3effab2517c293, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClips:
+  - name: BarBGM
+    clip: {fileID: 8300000, guid: 26b9778f7fb443d4b9173986d68c6e18, type: 3}
+  - name: BossBGM
+    clip: {fileID: 8300000, guid: e496c441bd6d1b24c81727b7a5035fbc, type: 3}
+  - name: GuestroomBGM
+    clip: {fileID: 8300000, guid: 02871bf18a931654092a85ebb444acf2, type: 3}
+  - name: GetItemSFX
+    clip: {fileID: 8300000, guid: 1e921efb6ed534146a9d860813eef35f, type: 3}
+  - name: HitSoundSFX
+    clip: {fileID: 8300000, guid: f31e7fce9049e134f8a0d37207e61155, type: 3}
+  - name: GunShotSoundSFX
+    clip: {fileID: 8300000, guid: 29e11aa1d0f490f4588bf2ddcc9334e1, type: 3}
+--- !u!82 &8389203713944684318
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8619176292611818117}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

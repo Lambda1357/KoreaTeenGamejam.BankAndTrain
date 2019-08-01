@@ -107,6 +107,7 @@ public class Player : MonoBehaviour
             Precision = 0;
             activeNum = 0;
             shotStick.isShot = false;
+            GameManager.instance.soundManager.PlayOneShot("GunShotSoundSFX");
         }
     }
 
@@ -154,6 +155,7 @@ public class Player : MonoBehaviour
                 GameManager.instance.isKey = true;
                 break;
             }
+            GameManager.instance.soundManager.PlayOneShot("GetItemSFX");
             Destroy(other.gameObject);
         }
     }
